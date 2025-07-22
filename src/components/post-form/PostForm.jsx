@@ -5,6 +5,7 @@ import storageService from '../../appwrite/storage'
 import databaseService from '../../appwrite/database'
 import { useNavigate } from 'react-router'
 import { useSelector } from 'react-redux'
+import authService from '../../appwrite/auth'
 
 export default function PostForm({ post }) {
     const { register, handleSubmit, watch, setValue, control, getValues } = useForm({
@@ -18,6 +19,7 @@ export default function PostForm({ post }) {
 
     const navigate = useNavigate();
     const userData = useSelector((state) => state.auth.userData);
+    console.log("Testing : ",userData);
 
     const submit = async (data) => {
         if (post) {
