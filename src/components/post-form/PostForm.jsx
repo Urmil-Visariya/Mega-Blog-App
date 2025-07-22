@@ -41,6 +41,7 @@ export default function PostForm({ post }) {
             if (file) {
                 const fileId = file.$id;
                 data.featuredImage = fileId;
+                console.log("User data is : ",userData)
                 const dbPost = await databaseService.createPost({ ...data, userId: userData.$id });
 
                 if (dbPost) {
