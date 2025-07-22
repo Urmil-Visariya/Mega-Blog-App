@@ -6,7 +6,7 @@ function AllPosts() {
     const [posts,setPosts] = useState([])
 
     useEffect(()=>{
-        databaseService.getPosts([]).then((posts) => {
+        databaseService.getPosts().then((posts) => {
             if(posts) {
                 setPosts(posts.documents)
             }
@@ -14,15 +14,17 @@ function AllPosts() {
     },[])
   return (
     <div className='w-full py-8'>
+        <div className="w-11/12">
         <Container>
-            <div className='flex flex-wrap'>
+            <div className='flex flex-wrap justify-center'>
                 {posts.map((post) => (
-                    <div key={post.$id} className='p-2 w-1/4'>
+                    <div key={post.$id} className='p-2 w-1/3'>
                         <PostCard {...post} />
                     </div>
                 ))}
             </div>
             </Container>
+        </div>
     </div>
   )
 }

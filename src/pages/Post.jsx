@@ -34,17 +34,26 @@ export default function Post() {
     };
 
     return post ? (
-        <div className="py-8">
+        <div className="posting py-8  flex justify-center ">
+            <div className="w-1/2  shadow-[0_0_19px_rgba(0,0,0,0.9)] bg-gray-950
+ shadow-blue-600 p-4">
             <Container>
-                <div className="w-full flex justify-center mb-4 relative border rounded-xl p-2">
+                <div className="w-full mb-4 relative border rounded-xl p-7">
                     <img
                         src={storageService.getFilePreview(post.featuredImage).replace("preview", "view") + "&mode=admin"}
                         alt={post.title}
-                        className="rounded-xl"
+                        className="rounded-xl w-full"
                     />
 
-                    {isAuthor && (
-                        <div className="absolute right-6 top-6">
+                </div>
+                <div className="w-full mb-2 pl-3 text-white text-start">
+                    <h1 className="text-2xl  font-bold">{post.title}</h1>
+                </div>
+                <div className="text-white pl-3 mb-6 text-start">
+                    {parse(post.content)}
+                    </div>
+                  {isAuthor && (
+                        <div className=" text-white w-full flex justify-end">
                             <Link to={`/edit-post/${post.$id}`}>
                                 <Button bgColor="bg-green-500" className="mr-3">
                                     Edit
@@ -55,14 +64,8 @@ export default function Post() {
                             </Button>
                         </div>
                     )}
-                </div>
-                <div className="w-full mb-6">
-                    <h1 className="text-2xl font-bold">{post.title}</h1>
-                </div>
-                <div className="browser-css">
-                    {parse(post.content)}
-                    </div>
             </Container>
+            </div>
         </div>
     ) : null;
 }
